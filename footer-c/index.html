@@ -2342,6 +2342,13 @@ html.wide .ft .ftbot{grid-area:bot;margin-top:8px}
 html.wide .ft .ftsec .ftbs{grid-template-columns:1fr 1fr}
 html.wide .ft .ftin{row-gap:0!important}
 html.wide .ft .ftcols2{margin-bottom:8px}
+</style><style id="vswitch-css">
+.vsw{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2147483000;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(14,69,106,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 12px 32px -8px rgba(6,25,42,.5),0 0 0 1px rgba(255,255,255,.14);font-family:Inter,system-ui,sans-serif}
+.vsw a{display:grid;place-items:center;min-width:48px;height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.01em;color:#fff;text-decoration:none;transition:background .3s,color .3s}
+.vsw a:hover{background:rgba(255,255,255,.16)}
+.vsw a[aria-current="page"]{background:#D5DB26;color:#0E456A}
+.vsw a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:600px){.vsw{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
 </style></head>
 <body>
 
@@ -2761,5 +2768,5 @@ els.forEach(el=>{el.classList.add('rv');io.observe(el);});})();
 
 /* pricing: the most popular plan carries the single lime button */
 (()=>{document.querySelectorAll('#s-price a').forEach(a=>{if(/30-day/i.test(a.textContent))a.classList.add('pop');});})();
-</script></body>
+</script><nav class="vsw" aria-label="Switch design version"><a href="/" title="Version 1: original footer">v1</a><a href="/footer-a" title="Version 2: footer A">v2</a><a href="/footer-c" aria-current="page" title="Version 3: footer C">v3</a></nav></body>
 </html>
