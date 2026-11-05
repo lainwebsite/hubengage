@@ -2873,7 +2873,7 @@ const soon=w=>{clearTimeout(tm);tm=setTimeout(()=>{if(cur===w)close();},160);};
 items.forEach(w=>{const t=trig(w);
  w.addEventListener('mouseenter',()=>open(w));w.addEventListener('mouseleave',()=>soon(w));
  if(t.classList.contains('nvb'))t.addEventListener('click',()=>{cur===w?close():open(w);});
- else{t.addEventListener('focus',()=>open(w));t.addEventListener('click',close);}
+ else{t.addEventListener('focus',()=>open(w));t.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();open(w);});}
  w.addEventListener('focusout',e=>{if(!w.contains(e.relatedTarget))soon(w);});
  w.querySelector('.mega').addEventListener('click',e=>{if(e.target.closest('a'))close();});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&cur){const t=trig(cur);close();t.focus();}});
