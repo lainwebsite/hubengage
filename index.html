@@ -1852,7 +1852,7 @@ UPD.push(()=>{if(open>-1&&pinP(W)<.75)setOpen(-1);});
 const T=$$('.htab',W),P=$$('.hpanel',W),N=T.length,STEP=620;let i=-1,lastP=-2;
 const HCs=T.map(t=>getComputedStyle(t).getPropertyValue('--c').trim()),SECT=['#E3F0FF','#E1F7EF','#FFF1DE','#FFE6E9'];
 const fit=()=>{if(NR)return;const H=VH();pin.style.setProperty('height',H+'px','important');W.style.setProperty('height',(H+STEP*N)+'px','important');
- cv.style.transform='none';const ch=cv.offsetHeight;const k=Math.min(1,(H-64-56)/ch);cv.style.transform='scale('+k.toFixed(4)+')';};
+ cv.style.transform='none';const ch=cv.offsetHeight;const k=Math.min(1,(H-64-56)/ch);cv.style.transform='scale('+k.toFixed(4)+')';document.documentElement.style.setProperty('--hbk',k.toFixed(4));};
 fit();addEventListener('resize',fit);setTimeout(fit,400);
 const set=n=>{if(n===i)return;i=n;W.dataset.hub=n;pin.style.backgroundColor=SECT[n];T.forEach((t,j)=>t.classList.toggle('on',j===n));
  P.forEach((p,j)=>p.classList.toggle('on',j===n));$$('[data-count]',P[n]).forEach(countUp);window.__hubColor=HCs[n];};
@@ -2432,6 +2432,9 @@ html.narrow .navlinks .nva{display:block}
 /* Hero buttons render at the same on-screen size as the navbar buttons: cancel the hero stage scale (--hk) */
 .hero-copy .btn-lime,.hero-copy .btn-ghost{zoom:calc(1 / var(--hk,1))}
 html.narrow .hero-copy .btn-lime,html.narrow .hero-copy .btn-ghost{zoom:1}
+/* Hub panel buttons: cancel the platform stage scale (--hbk) so they match the navbar buttons */
+.hcv2 .hpanel .btn,.hcv2 .hpanel .btn-blue{zoom:calc(1 / var(--hbk,1))}
+html.narrow .hcv2 .hpanel .btn,html.narrow .hcv2 .hpanel .btn-blue{zoom:1}
 </style><style id="vswitch-css">
 .vsw{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2147483000;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(14,69,106,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 12px 32px -8px rgba(6,25,42,.5),0 0 0 1px rgba(255,255,255,.14);font-family:Inter,system-ui,sans-serif}
 .vsw a{display:grid;place-items:center;min-width:48px;height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.01em;color:#fff;text-decoration:none;transition:background .3s,color .3s}
