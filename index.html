@@ -3527,7 +3527,7 @@ html body .nav .navlinks .nvi:not(.v2l) .mtab.on,html body .nav .navlinks .nvi:n
 html body .nav .navlinks .nvi:not(.v2l) .mtab.on::after{opacity:1}
 html body .nav .navlinks .nvi:not(.v2l) .mpanes{display:grid}
 html body .nav .navlinks .nvi:not(.v2l) .mpane{grid-area:1/1;visibility:hidden;opacity:0;transition:opacity .2s;padding:12px;border-radius:24px;background:var(--bg)}
-html body .nav .navlinks .nvi:not(.v2l) .mpane.on{visibility:visible;opacity:1}
+html body .nav .navlinks .nvi:not(.v2l) .mpane.on{visibility:inherit;opacity:1}
 html body .nav .navlinks .nvi:not(.v2l) .mpl{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:8px}
 html body .nav .navlinks .nvi:not(.v2l) .mpane .mi{margin:0;padding:11px 12px;border-radius:16px;background:rgba(255,255,255,.7);align-items:center;transition:background .25s,transform .25s,box-shadow .25s}
 html body .nav .navlinks .nvi:not(.v2l) .mpane .mi:hover,html body .nav .navlinks .nvi:not(.v2l) .mpane .mi:focus-visible{background:#fff;transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(14,69,106,.45)}
@@ -3633,7 +3633,7 @@ html body .nav .navlinks .nvi.v2l .x2tab.on .mic.sm{background:#fff}
 html body .nav .navlinks .nvi.v2l .x2body{display:grid;grid-template-columns:minmax(0,1fr) 296px;gap:16px;align-items:stretch}
 html body .nav .navlinks .nvi.v2l .x2panes{display:grid}
 html body .nav .navlinks .nvi.v2l .x2pane{grid-area:1/1;visibility:hidden;opacity:0;transition:opacity .2s;display:flex}
-html body .nav .navlinks .nvi.v2l .x2pane.on{visibility:visible;opacity:1}
+html body .nav .navlinks .nvi.v2l .x2pane.on{visibility:inherit;opacity:1}
 html body .nav .navlinks .nvi.v2l .x2items{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:10px}
 html body .nav .navlinks .nvi.v2l .x2items .mi:last-child:nth-child(odd){grid-column:1/-1}
 html body .nav .navlinks .nvi.v2l .x2pane .mi{margin:0;padding:12px 16px;gap:14px;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px #E1E8F0;align-items:flex-start!important}
@@ -3677,6 +3677,60 @@ html body .nav .navlinks .nvi.v2l .mint .mchips{display:grid;grid-template-colum
 html body .nav .navlinks .nvi.v2l .mint .mchip{flex-direction:column;align-items:flex-start;gap:12px;min-height:76px;padding:14px 16px;border-radius:8px;background:#fff;line-height:1.3;white-space:normal;box-shadow:inset 0 0 0 1px #E1E8F0}
 html body .nav .navlinks .nvi.v2l .mint .mchip::before{content:"";width:24px;height:4px;border-radius:2px;background:var(--c)}
 html body .nav .navlinks .nvi.v2l .mint .mchip:hover,html body .nav .navlinks .nvi.v2l .mint .mchip:focus-visible{background:var(--t);box-shadow:inset 0 0 0 1px var(--c)}
+</style>
+<style id="mega-final">
+/* ===== One spacing system for every megamenu (V1 + V2): container padding 16, gap between tiles 12, tile padding 12, icon 34. Icon and text of a tile are centred on each other; links in cards sit at the bottom. ===== */
+html body .nav .navlinks .nvi{--mp:16px;--mg:12px;--mt:12px;--mic:34px}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap,html body .nav .navlinks .nvi.v2l .mega .mcardwrap{display:flex;flex-direction:column;gap:var(--mp);padding:var(--mp)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap:has(>.mint),html body .nav .navlinks .nvi.v2l .mega .mcardwrap:has(>.mint){padding:0}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap>*,html body .nav .navlinks .nvi.v2l .mega .mcardwrap>*{margin:0!important}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mrail,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .x2p,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .x2s,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .msol,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mres,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mstrip,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .macross,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mrail,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2p,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2s,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .msol,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mres,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mstrip,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .macross{padding:0;margin:0}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mi,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .ms,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mtab,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mchip,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mi,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .ms,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mtab,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mchip{box-sizing:border-box;margin:0;padding:var(--mt)!important;gap:12px;align-items:center!important;min-height:0}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mi>.mic,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .ms>.mic,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mtab>.mic,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mi>.mic,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .ms>.mic,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mtab>.mic{width:var(--mic);height:var(--mic);flex:none}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mtx,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mtx{display:flex;flex-direction:column;justify-content:center;gap:2px;text-align:left;padding:0!important}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mtx small,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mtx small{margin:0}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mstrip,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mstrip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mrail,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mrail{display:grid;grid-template-columns:292px minmax(0,1fr);gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mtabs{padding:var(--mg);gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mtab{flex:1}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpane,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mpane{padding:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpl,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .x2items,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mpl,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpl .mi:last-child:nth-child(odd),html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .x2items .mi:last-child:nth-child(odd),html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mpl .mi:last-child:nth-child(odd),html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2items .mi:last-child:nth-child(odd){grid-column:1/-1}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2pane{padding:0;background:transparent;border:0}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2body{gap:var(--mp);align-items:stretch}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2tabs{gap:var(--mg);margin:0}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2tab{height:auto;padding:var(--mt) var(--mp) var(--mt) var(--mt);gap:10px;min-height:0}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2tab .mic.sm{width:28px;height:28px}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .macross{display:grid;grid-template-columns:150px repeat(4,minmax(0,1fr));gap:var(--mg);padding:var(--mp);align-items:start}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2aside{padding:var(--mp);gap:var(--mg);justify-content:flex-start}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .macross .mi,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .x2aside .mi,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .macross .mi,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2aside .mi{padding:0!important;margin:0!important;align-items:flex-start!important;background:transparent;box-shadow:none}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .macross .mlab,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .x2aside .mlab,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .macross .mlab,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2aside .mlab{padding:0!important;margin:0!important;align-self:flex-start;line-height:1.2}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2aside .mlab{margin-bottom:0!important}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .msol{display:grid;grid-template-columns:1.3fr 1.05fr .85fr;gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .msol .mcol{padding:var(--mp)!important}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .m2,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .m2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:var(--mg);row-gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mh,html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mh.plain,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mh,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mh.plain{margin:0 0 var(--mg)!important;padding:0}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g{gap:var(--mg)}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g .mi>.mic{width:var(--mic);height:var(--mic)}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g .mi .mtx{padding:0!important}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mcard,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mcard{display:flex;flex-direction:column;align-items:flex-start;gap:var(--mg);padding:var(--mp)!important;margin:0;align-self:stretch;justify-content:flex-start}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mcard .mlk,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mcard .mlk{margin-top:auto;align-self:flex-start}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mcard p,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mcard p{margin:0}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mres{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mres .mcol{padding:var(--mp)!important;gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mres .mi{flex:1}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mint,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mint{padding:var(--mp)!important;gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mint .mchips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--mg)}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mint .mchips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--mg)}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mint .mlab,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mint .mlab{margin:0;padding:0}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .mint .mchip{flex-direction:column;align-items:flex-start!important;justify-content:flex-start}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2s{display:grid;grid-template-columns:260px minmax(0,1fr);gap:var(--mp);align-items:stretch}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--mp);align-items:start}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g.x5,html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g.x4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:var(--mg)}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g .mi .mtx b{font-size:13px;line-height:1.25;overflow-wrap:anywhere}
+@media (max-width:1279px){html body .nav .navlinks .nvi{--mt:10px;--mic:28px}}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpane{display:flex}
+html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpane .mpl{flex:1}
 </style>
 <style id="ver-toggle">
 /* ===== V1 / V2 toggle: same page, only the navbar content differs ===== */
