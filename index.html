@@ -36,6 +36,8 @@ html.narrow body #s-intel .imore span{flex:0 1 auto}
 /* stories quote card: arrow buttons get a visible ring so their edge sits on the same 56px padding line as the quote (white-on-white made the bottom/left gap look bigger) */
 html body #s-stories .tqb{box-shadow:inset 0 0 0 1px #dfe5ee}
 html body #s-stories .tqb:hover{box-shadow:inset 0 0 0 1px #c9d3e0}
+/* quote card: arrow row sits on the same bottom line as the stat labels ("policy acknowledgment", "tools replaced") */
+html.wide body #s-stories .tq{padding-bottom:36px!important}
 /* challenge cards (#sgrid): same padding top and bottom (was 20px top / 26px bottom) */
 html body .sgrid .scard,html body .sgrid.all .scard{padding:22px!important}
 /* hero copy: supporting text one step larger (intro, proof line) — desktop only; buttons and eyebrow use the shared components */
@@ -69,11 +71,19 @@ html.wide body #s-platform{background:#F6F7F9}
 html.wide body #s-platform .hpin.hpin{background:transparent!important}
 /* hub panel: tighter inner padding (56px -> 40px on every side) */
 html.wide body #s-platform .hpanels .hpanel.hpanel{padding:40px!important}
+/* hub panel feature tags one step smaller: 12px text, 5px 11px padding, 8px gap */
+html body #s-platform .hpanel .hpills{gap:8px!important}
+html body #s-platform .hpanel .hpills span{font-size:12px!important;line-height:1.4!important;padding:5px 11px!important}
 /* "Why teams switch" cards: same padding top and bottom (was 32px / 34px plus leftover space under short text) - icon sits on the top padding, title + text sit on the bottom padding */
 html.wide body #s-why .wy{padding:32px!important}
 html.wide body #s-why .wy .wyi{margin-bottom:auto}
 /* Intelligence stacked cards (01-05): text side gets the same padding on all four sides (was 48px top/bottom, 56px left/right) */
 html.wide body #s-intel .skx .skl{padding:48px!important}
+/* intelligence cards: both tags smaller, and clearly two sizes - top hub tag is a small 10px pill label, bottom "Saves:" tag is a 12px chip */
+html body #s-intel .ihub.ihub{font-size:10px!important;line-height:1.2!important;padding:3px 9px 3px 7px!important;gap:5px!important;letter-spacing:.02em}
+html body #s-intel .ihub.ihub i{width:6px!important;height:6px!important}
+html body #s-intel .lae.lae{font-size:12px!important;line-height:1.35!important;padding:6px 11px!important;gap:7px!important;border-radius:8px!important}
+html body #s-intel .lae.lae i{width:5px!important;height:5px!important}
 /* "One workforce" hub cards: at rest the card hugs its content (no empty padding); on hover/open it grows to the full 225px for the problem text. The row keeps its 225px height and centres the card, so the card stays centred on its connector line */
 html.wide body #pillars .pbtn{height:225px!important;align-items:center!important}
 html.wide body #pillars .pcard2{height:var(--rh,225px)!important;overflow:hidden;align-content:start!important;transition:height .7s cubic-bezier(.45,0,.2,1),background .6s ease,border-color .6s ease,box-shadow .6s ease,opacity .5s!important}
@@ -116,7 +126,130 @@ html.narrow body #s-hero{background:radial-gradient(1100px 600px at 50% 0%,#E4F0
 html.narrow body #hstage{background:none!important}
 /* mobile hub cards: height hugs the card's own content at rest; when tapped open it grows to fit the problem text */
 html.narrow body #pillars .pcard2{height:auto!important;min-height:0!important;interpolate-size:allow-keywords;transition:height .5s cubic-bezier(.45,0,.2,1),background .5s,border-color .5s!important}
-html.narrow body #pillars .pbtn:not(:hover):not(.flip):not(.sel):not(:focus-visible) .pprob{position:absolute;left:18px;right:56px;top:18px}
+html.narrow body #pillars .pbtn:not(.flip) .pprob{position:absolute;left:18px;right:56px;top:18px}
+/* mobile hub cards: tap opens, tap again (or tap elsewhere) closes - a tap no longer leaves the card stuck open through the phone's sticky :hover */
+html.narrow body #pillars .pbtn:not(.flip):hover .pcard2,html.narrow body #pillars .pbtn:not(.flip):focus .pcard2{background:var(--rbg)!important;border-color:var(--rbd)!important;box-shadow:none!important;transform:none!important}
+html.narrow body #pillars .pbtn:not(.flip):hover .pface,html.narrow body #pillars .pbtn:not(.flip):focus .pface{opacity:1!important;transform:none!important;filter:none!important}
+html.narrow body #pillars .pbtn:not(.flip):hover .pprob,html.narrow body #pillars .pbtn:not(.flip):focus .pprob{opacity:0!important;filter:blur(4px)!important;transform:translateY(14px)!important;pointer-events:none!important}
+
+/* ===== mobile: CTA buttons live in the hamburger menu, smaller shared button size, hero strip as a marquee ===== */
+html.narrow body .nav .navbtns{display:none!important}
+html.narrow body .nav .navtog{margin-left:auto}
+html.narrow body .nav #navlinks>.mcta.mcta{display:flex!important;flex-direction:column;gap:10px;padding:20px 0 8px}
+html.narrow body .nav #navlinks>.mcta>.btn.btn{width:100%;justify-content:center;font-size:14px!important;font-weight:500!important;height:40px!important;min-height:40px!important;padding:0 16px!important;border:0!important;margin:0!important}
+html.narrow body .nav #navlinks>.mcta>.btn-lime.btn{color:#0E456A!important}
+html.narrow body .nav #navlinks>.mcta>.btn-ghost.btn{color:#fff!important}
+html.narrow body{--r-btn:40px!important}
+html.narrow body .btn,html.narrow body .btn-lime,html.narrow body .btn-ghost,html.narrow body .btn-blue{font-size:14px!important;line-height:1.2!important;min-height:40px!important;height:40px!important;padding-top:0!important;padding-bottom:0!important;border-radius:10px!important}
+html.narrow body .hstrip .hs-track{overflow:hidden!important;scroll-snap-type:none!important;padding-left:0!important;padding-right:0!important}
+html.narrow body .hstrip .hs-run{display:flex;gap:var(--r-gap);width:max-content;animation:hsmq 40s linear infinite;padding-right:var(--r-gap)}
+html.narrow body .hstrip .hs-run>.hs-item{scroll-snap-align:none}
+@keyframes hsmq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){html.narrow body .hstrip .hs-run{animation:hsmq 40s linear infinite!important}}
+
+/* ===== mobile hubs: pinned like desktop - one sticky screen shows the explanation of one hub at a time and swaps as you scroll; the 4 tabs become an icon rail floating on the right edge of that sticky screen (so it never leaves the section) ===== */
+html.narrow,html.narrow body{overflow-x:clip!important;overflow-y:visible!important;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.narrow body #s-platform .hpin{overflow:clip!important}
+html.narrow body #s-platform .hpanels.hpanels{position:relative;padding:0!important;margin-top:16px!important}
+html.narrow body #s-platform .hst{position:sticky;top:var(--mnav,64px);height:calc(100svh - var(--mnav,64px));overflow:hidden}
+html.narrow body #s-platform .hst>.hpanel.hpanel{display:flex!important;position:absolute!important;inset:0;padding:32px 66px 28px 20px!important;gap:14px!important;justify-content:flex-start;opacity:0!important;visibility:hidden!important;transition:opacity .45s ease,visibility 0s .45s!important}
+html.narrow body #s-platform .hst>.hpanel.hpanel.on{opacity:1!important;visibility:visible!important;transition:opacity .45s ease,visibility 0s!important}
+html.narrow body #s-platform .hst .hleft.hleft{gap:10px!important}
+html.narrow body #s-platform .hst .hleft .hbig.hbig{width:40px!important;height:40px!important;border-radius:12px!important}
+html.narrow body #s-platform .hst .hleft .hbig svg{width:20px!important;height:20px!important}
+html.narrow body #s-platform .hst .hleft h3{font-size:24px!important;line-height:1.15!important;margin:2px 0 0!important}
+html.narrow body #s-platform .hst .hleft>p{font-size:14px!important;line-height:1.5!important}
+html.narrow body #s-platform .hst .hleft .hpills.hpills{gap:6px!important;padding:0!important}
+html.narrow body #s-platform .hst .hleft .hpills.hpills span{font-size:12px!important;line-height:1.3!important;padding:4px 10px!important}
+html.narrow body #s-platform .hst .hleft .hstat.hstat{padding-top:0!important}
+html.narrow body #s-platform .hst .hleft .hstat b{font-size:24px!important}
+html.narrow body #s-platform .hst .hleft .hstat span{font-size:13px!important}
+html.narrow body #s-platform .hst .hleft .btn{margin-top:2px!important}
+html.narrow body #s-platform .hst .hright.hright{position:absolute!important;flex:none;max-width:none!important;padding:12px!important;margin:0!important;box-sizing:border-box;overflow:hidden;border-radius:16px!important;background:color-mix(in srgb,var(--hrc,#3aa6f5) 12%,#fff)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--hrc,#3aa6f5) 22%,#fff)!important;transform:none!important}
+html.narrow body #s-platform .hst .hr-in{transform-origin:0 0;display:flex;flex-direction:column;gap:10px}
+html.narrow body #s-platform .hst .hr-in .sched{box-shadow:0 0 0 1px #e6e8ef,0 6px 16px rgba(16,26,77,.08)!important}
+html.narrow body #s-platform .hst .hr-in .ftoast{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;top:auto!important;margin:0!important;animation:none!important}
+html.narrow body #s-platform .sch-fit{width:100%;position:relative;overflow:visible}
+html.narrow body #htabs.htabs{position:absolute!important;right:10px;top:50%;width:auto!important;margin:0!important;padding:6px!important;flex-direction:column;gap:6px;overflow:visible;z-index:60;border-radius:16px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(14,40,80,.14),inset 0 0 0 1px rgba(14,69,106,.08);opacity:0;pointer-events:none;transform:translate(16px,-50%);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+html.narrow body #htabs.htabs.rail-on{opacity:1;pointer-events:auto;transform:translate(0,-50%)}
+html.narrow body #htabs .htab{min-width:0!important;width:40px;height:40px;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;display:grid!important;place-items:center;border-radius:11px;transform:none!important}
+html.narrow body #htabs .htab .htt,html.narrow body #htabs .htab .hbar{display:none!important}
+html.narrow body #htabs .htab .hti{position:static!important;width:32px!important;height:32px!important;border-radius:9px!important;margin:0!important;transition:background .35s,opacity .35s,transform .35s}
+html.narrow body #htabs .htab .hti svg{width:16px!important;height:16px!important}
+html.narrow body #htabs .htab.on .hti{transform:scale(1.12);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 22%,transparent)!important}
+
+/* ===== mobile "One platform. Two ways": heading block left-aligned; the two cards tidied (no decorative rings over the chips, chips in an even 2-column grid, one-line eyebrow, smaller box illustration) ===== */
+html.narrow body #s-two .twowrap>.cstack{align-items:flex-start!important;text-align:left!important;padding:0 20px!important;box-sizing:border-box}
+html.narrow body #s-two .twowrap>.cstack>*{text-align:left!important;margin-left:0!important;margin-right:0!important;align-self:flex-start!important}
+/* the orbit (breathing rings + spinning core) plays behind the chips, sized to the phone card, and the chips float like on desktop */
+html.narrow body #s-two .cons-rot.cons-rot{position:relative!important}
+html.narrow body #s-two .way .ring,html.narrow body #s-two .way .ccore{display:block!important;position:absolute!important;left:50%!important;top:50%!important;translate:-50% -50%;z-index:0;pointer-events:none;opacity:.55}
+html.narrow body #s-two .way .ring.r1{width:340px!important;height:340px!important}
+html.narrow body #s-two .way .ring.r2{width:270px!important;height:270px!important}
+html.narrow body #s-two .way .ring.r3{width:200px!important;height:200px!important}
+html.narrow body #s-two .way .ring.r4{width:140px!important;height:140px!important}
+html.narrow body #s-two .way .ccore{width:120px!important;height:120px!important;opacity:.9}
+html.narrow body #s-two .cons-orb{overflow:visible;padding:10px 0}
+html.narrow body #s-two .cchip{position:relative!important;z-index:1}
+html.narrow body #s-two .way .eyebrow{white-space:nowrap!important;width:auto!important;align-self:flex-start}
+html.narrow body #s-two .way .wcopy>div{gap:12px!important}
+html.narrow body #s-two .cons-orb{width:100%!important;height:auto!important;display:block!important;margin-top:24px!important}
+html.narrow body #s-two .cons-rot{display:grid!important;grid-template-columns:1fr 1fr;gap:8px!important;width:100%!important;height:auto!important;transform:none!important}
+html.narrow body #s-two .cchip{position:static!important;transform:none!important;width:100%!important;height:auto!important;left:auto!important;top:auto!important}
+html.narrow body #s-two .cchip>span{width:100%;box-sizing:border-box;transform:none!important;animation:bob 5s ease-in-out infinite!important;animation-delay:var(--d,0s)!important;font-size:13px!important;line-height:1.2!important;padding:9px 12px!important;gap:8px!important;justify-content:flex-start;white-space:nowrap}
+html.narrow body #s-two .otg{margin-top:24px!important}
+html.narrow body #s-two .otg svg.obs{height:110px!important;max-width:100%;width:auto!important;margin:12px auto 0!important;justify-self:center;grid-column:1/-1}
+
+/* mobile stories: quote card and the four stat cards share one 12px gap, two equal columns */
+html.narrow body #s-stories .tsg.tsg{gap:12px!important;row-gap:12px!important}
+html.narrow body #s-stories .tsg>.tstats.tstats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:12px!important;margin:0!important;padding:0!important}
+html.narrow body #s-stories .tsg>.tq{margin:0!important}
+
+/* mobile / touch industries tiles: no hover-only "Explore" label - a tap left it stuck on screen; the tile stays as it is */
+html.narrow body .ind8 .i8 .icap::after{display:none!important}
+html.narrow body .ind8 .i8:hover .icap,html.narrow body .ind8 .i8:focus .icap,html.narrow body .ind8 .i8:focus-visible .icap,html.narrow body .ind8 .i8:active .icap{padding-bottom:22px!important}
+html.narrow body .itile:hover img{transform:none!important}
+/* industries tiles: on phones the caption sits on the bottom edge (no reserved 3-line block); on desktop the title and text one step smaller */
+html.narrow body #s-ind .itile .icap p{min-height:0!important}
+html.wide body #s-ind .itile .icap h3{font-size:20px!important;line-height:1.2!important;letter-spacing:-.01em!important}
+html.wide body #s-ind .itile .icap p{font-size:14px!important;line-height:1.5!important}
+@media (hover:none){html body .ind8 .i8 .icap::after{display:none!important}html body .ind8 .i8:hover .icap{padding-bottom:inherit}}
+/* mobile logo strip: logos about a third smaller, tighter gaps */
+html.narrow body #s-logos .ltrack{zoom:.8}
+html.narrow body #s-logos .lset{gap:72px!important;padding-right:72px!important}
+html.narrow body #s-logos .lmask{height:40px!important;-webkit-mask-size:100% 40px!important;mask-size:100% 40px!important}
+/* mobile intelligence cards: the product mock gets the same padding on top as on the sides and bottom (it was 0 on top, flush against the text block) */
+html.narrow body #s-intel ol .skc .skr.skr{padding:var(--r-pad) var(--r-pad) var(--r-pad)!important}
+/* mobile intelligence cards: roomier text block and tags (tags had 3px/6px inside padding, cramped around 14px text) */
+html.narrow body #s-intel ol .skc .skl.skl{padding:26px 24px!important}
+html.narrow body #s-intel ol .skc .ihub.ihub{padding:6px 12px 6px 10px!important;gap:7px!important;line-height:1.2!important;margin-bottom:18px!important}
+html.narrow body #s-intel ol .skc .lae.lae{padding:10px 14px!important;gap:9px!important;line-height:1.4!important;border-radius:10px!important;align-items:flex-start!important}
+html.narrow body #s-intel ol .skc .lae.lae i{margin-top:6px}
+html.narrow body #s-intel ol .skc .skl h3{margin-bottom:12px!important}
+html.narrow body #s-intel ol .skc .skl p{margin-bottom:22px!important}
+/* mobile pricing: "Most popular" badge centred on the card's top edge */
+html.narrow body #s-price .prc .prtag.prtag{left:50%!important;right:auto!important;transform:translateX(-50%)!important;text-align:center!important;white-space:nowrap}
+/* mobile CTA: copy block centred */
+html.narrow body #s-cta .ctacopy,html.narrow body #s-cta .ctacopy>div{align-items:center!important;text-align:center!important}
+html.narrow body #s-cta .ctacopy *{text-align:center!important}
+html.narrow body #s-cta .ctacopy .eyebrow{align-self:center!important;margin-left:auto!important;margin-right:auto!important}
+html.narrow body #s-cta .ctacopy .row,html.narrow body #s-cta .ctacopy>div:last-child{justify-content:center!important}
+/* mobile footer: security badges as compact rows (icon left, name + status right), one 10px gap everywhere; eyebrow on one line */
+html.narrow body .ftsec.ftsec{gap:12px!important}
+html.narrow body .ftform.ftform input,html.narrow body .ftform.ftform button{height:40px!important;min-height:40px!important;box-sizing:border-box}
+html.narrow body .ftform.ftform label{margin-bottom:2px}
+html.narrow body .ftsec .eyebrow{white-space:nowrap!important;align-self:flex-start}
+html.narrow body .ftbs.ftbs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:10px!important}
+html.narrow body .ftbs .ftbt.ftbt{height:auto!important;min-height:0!important;aspect-ratio:auto!important;display:grid!important;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto;column-gap:10px;row-gap:2px;align-items:center;justify-items:start;text-align:left!important;padding:10px 12px!important;border-radius:12px!important}
+html.narrow body .ftbs .ftbt .ftbi{grid-row:1/3;width:32px!important;height:32px!important;border-radius:9px!important}
+html.narrow body .ftbs .ftbt .ftbi svg{width:18px!important;height:18px!important}
+html.narrow body .ftbs .ftbt b{font-size:14px!important;line-height:1.2!important;align-self:end}
+html.narrow body .ftbs .ftbt small{font-size:12px!important;line-height:1.2!important;align-self:start}
+
+html.narrow body #s-platform .hst .hpanel .hleft,html.narrow body #s-platform .hst .hpanel .hright{transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1)!important}
+html.narrow body #s-platform .hst .hpanel .hright{opacity:0;transform:translateY(24px)!important;pointer-events:none}
+html.narrow body #s-platform .hst .hpanel.mk .hright{opacity:1;transform:none!important;pointer-events:auto}
+html.narrow body #s-platform .hst .hpanel.mk .hleft{opacity:0;transform:translateY(-24px);pointer-events:none}
 </style>
 <style>
 :root{--ez:cubic-bezier(.2,.7,.15,1);--ink:#171a21;--mut:rgba(24,24,24,.5)}
@@ -3027,7 +3160,7 @@ document.querySelectorAll('h1 br,h2 br,.b16 br,p br').forEach(b=>b.replaceWith('
 
 /* type floor: nothing under 14px on phones/tablets */
 (()=>{if(!document.documentElement.classList.contains('narrow'))return;
-const fix=()=>{document.querySelectorAll('body *').forEach(e=>{if(e.closest('svg,.ltrack'))return;
+const fix=()=>{document.querySelectorAll('body *').forEach(e=>{if(e.closest('svg,.ltrack,.eyebrow,.ftbt small,#s-platform .hright,#s-platform .hpills,#s-two .cchip'))return;/* hub product mocks are illustrations scaled to fit, and the hub tags are deliberately small */
  if(![...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()))return;
  const fs=parseFloat(getComputedStyle(e).fontSize);if(fs<14)e.style.setProperty('font-size','14px','important');});};
 addEventListener('load',()=>setTimeout(fix,300));
@@ -3418,6 +3551,8 @@ html.wide body #pillars .pcard2.pcard2>.pprob.pprob{top:18px!important;bottom:au
 /* open card: the (+) moves up to sit on the first line ("HR partner · Engagement"): 18px padding + half of the 21px line - half of the 28px button */
 html.wide body #pillars .pbtn .pcard2.pcard2::after{transition:top .55s cubic-bezier(.45,0,.2,1),transform .6s var(--soft),background .5s,color .5s!important}
 html.wide body #pillars .pbtn:hover .pcard2.pcard2::after,html.wide body #pillars .pbtn.flip .pcard2.pcard2::after,html.wide body #pillars .pbtn:focus-visible .pcard2.pcard2::after,html.wide body #pillars .pbtn.sel .pcard2.pcard2::after{top:14.5px!important}
+/* resting card: (+) centred on the hub name line (Communications / Operations / Knowledge / Engagement) */
+html.wide body #pillars .pbtn:not(:hover):not(.flip):not(:focus-visible):not(.sel) .pcard2.pcard2::after{top:var(--pt,56.5px)!important}
 </style>
 <style id="mobile-rhythm">
 /* ===== Responsive spacing rhythm (tablet, mobile landscape, mobile portrait) =====
@@ -3780,8 +3915,61 @@ const d=document.querySelector('#s-day .dcv');if(d)new MutationObserver(go).obse
 
 <script id="pill-hug">(()=>{const R=document.documentElement;if(!R.classList.contains('wide'))return;
 /* measure each hub card's resting height (its own content + padding) so the height can animate smoothly to 225px on hover and back */
-const fit=()=>document.querySelectorAll('#pillars .pcard2').forEach(c=>{const f=c.querySelector('.pface');if(!f)return;const cs=getComputedStyle(c);const h=f.offsetHeight+parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom)+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth);c.style.setProperty('--rh',Math.ceil(h)+'px');const pr=c.querySelector('.pprob');if(pr){const ph=pr.offsetHeight+parseFloat(cs.paddingTop)*2+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth);c.style.setProperty('--ph',Math.ceil(Math.max(ph,h))+'px');}});
+const fit=()=>document.querySelectorAll('#pillars .pcard2').forEach(c=>{const f=c.querySelector('.pface');if(!f)return;const cs=getComputedStyle(c);const h=f.offsetHeight+parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom)+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth);c.style.setProperty('--rh',Math.ceil(h)+'px');const pr=c.querySelector('.pprob');if(pr){const ph=pr.offsetHeight+parseFloat(cs.paddingTop)*2+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth);c.style.setProperty('--ph',Math.ceil(Math.max(ph,h))+'px');}
+ const t=c.querySelector('.ptx b');if(t){const cr=c.getBoundingClientRect(),sc=cr.height/c.offsetHeight||1,tr=t.getBoundingClientRect();const y=((tr.top+tr.bottom)/2-cr.top)/sc-parseFloat(cs.borderTopWidth)-14;c.style.setProperty('--pt',y.toFixed(2)+'px');}});
 fit();addEventListener('load',fit);addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);setTimeout(fit,600);})();</script>
+
+
+
+<script id="mob-fix">(()=>{const R=document.documentElement;if(!R.classList.contains('narrow'))return;
+/* nav CTAs: move copies into the hamburger menu */
+const nl=document.getElementById('navlinks'),nb=document.querySelector('.nav .navbtns');if(nl&&nb&&!nl.querySelector('.mcta')){const w=document.createElement('div');w.className='mcta';[...nb.querySelectorAll('a,button')].forEach(b=>{if(b.classList.contains('navind'))return;const c=b.cloneNode(true);c.removeAttribute('id');w.appendChild(c)});const lime=w.querySelector('.btn-lime');if(lime)w.prepend(lime);nl.appendChild(w);}
+/* hero strip: continuous marquee (items duplicated once so the loop is seamless) */
+const go=()=>{const tr=document.querySelector('.hstrip .hs-track');if(!tr||tr.querySelector('.hs-run'))return!!tr;const run=document.createElement('div');run.className='hs-run';const items=[...tr.children];items.forEach(x=>run.appendChild(x));items.forEach(x=>{const c=x.cloneNode(true);c.setAttribute('aria-hidden','true');run.appendChild(c)});tr.appendChild(run);return true};
+if(!go()){let n=0;const t=setInterval(()=>{if(go()||++n>40)clearInterval(t)},150);}
+})();</script><script id="mob-hubrail">(()=>{const R=document.documentElement;if(!R.classList.contains('narrow'))return;
+const W=document.getElementById('s-platform'),T=document.getElementById('htabs'),HP=W&&W.querySelector('.hpanels');if(!W||!T||!HP)return;const tabs=[...T.querySelectorAll('.htab')],P=[...HP.querySelectorAll('.hpanel')],N=P.length;
+/* sticky screen inside the panels block; panels and the icon rail live in it.
+   Each hub takes two screens while it is pinned: first the explanation, then its product dashboard at a readable size */
+const st=document.createElement('div');st.className='hst';HP.appendChild(st);P.forEach(p=>st.appendChild(p));st.appendChild(T);T.classList.add('rail-on');
+const sw=[...W.querySelectorAll('.hpanel .sched:not(.m)')].map(sc=>{const w=document.createElement('div');w.className='sch-fit';sc.parentNode.insertBefore(w,sc);w.appendChild(sc);return w});
+let STEP=500,cur=-1;const S=N*2;
+const fit=()=>{const nav=document.querySelector('.nav');const nb=nav?Math.round(nav.getBoundingClientRect().bottom):64;R.style.setProperty('--mnav',nb+'px');
+ const H=st.clientHeight;STEP=Math.round(H*.7);HP.style.setProperty('height',(H+STEP*(S-1))+'px','important');
+ P.forEach((p,j)=>{const L=p.querySelector('.hleft'),Rt=p.querySelector('.hright');if(!L||!Rt)return;
+  let In=Rt.querySelector(':scope>.hr-in');if(!In){In=document.createElement('div');In.className='hr-in';[...Rt.childNodes].forEach(n=>In.appendChild(n));Rt.appendChild(In);const col=tabs[j]&&tabs[j].style.getPropertyValue('--c');if(col)Rt.style.setProperty('--hrc',col);}
+  const cs=getComputedStyle(p),PAD=12,pl=parseFloat(cs.paddingLeft),pt=parseFloat(cs.paddingTop);const cw=p.clientWidth-pl-parseFloat(cs.paddingRight);
+  const iw=cw-PAD*2;In.style.transform='none';In.style.width=iw+'px';
+  sw.forEach(w=>{if(!In.contains(w))return;const sc=w.firstElementChild;const k=Math.min(1,iw/722);sc.style.cssText+=';width:722px!important;height:494px!important;padding:0!important;transform:scale('+k+');transform-origin:0 0;max-width:none!important';w.style.height=(494*k)+'px';});
+  const nh=In.offsetHeight;const room=H-pt-parseFloat(cs.paddingBottom);
+  const k=Math.max(.3,Math.min(1,(room-PAD*2)/nh));In.style.transform='scale('+k.toFixed(4)+')';
+  const rw=Math.round(iw*k+PAD*2),rh=Math.round(nh*k+PAD*2);
+  Rt.style.setProperty('width',rw+'px','important');Rt.style.setProperty('height',rh+'px','important');Rt.style.left=(pl+(cw-rw)/2)+'px';Rt.style.top=(pt+Math.max(0,(room-rh)/2))+'px';Rt.style.visibility='';});
+ cur=-1;upd();};
+const upd=()=>{const nb=parseFloat(getComputedStyle(R).getPropertyValue('--mnav'))||64;const top=HP.getBoundingClientRect().top;let n=Math.floor((nb-top)/STEP+.5);n=Math.max(0,Math.min(S-1,n));if(n!==cur){cur=n;const h=n>>1,m=n%2===1;P.forEach((p,j)=>{p.classList.toggle('on',j===h);p.classList.toggle('mk',j===h&&m);});tabs.forEach((t,j)=>t.classList.toggle('on',j===h));}};
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',fit);addEventListener('load',fit);document.fonts&&document.fonts.ready.then(fit);setTimeout(fit,300);setTimeout(fit,1200);fit();
+tabs.forEach((t,j)=>t.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();const nb=parseFloat(getComputedStyle(R).getPropertyValue('--mnav'))||64;const y=HP.getBoundingClientRect().top+scrollY-nb+j*2*STEP+2;scrollTo({top:y,behavior:'smooth'});},true));
+})();</script><script id="faq-smooth">(()=>{/* FAQ: smooth open and close (height eases, answer fades/slides), one answer open at a time - desktop and mobile */
+const E='cubic-bezier(.33,1,.68,1)',D=480;const all=[...document.querySelectorAll('details.fq')];
+const A=new Map();
+const shut=d=>{if(!d.open||d.dataset.closing)return;const sm=d.querySelector('summary'),body=d.querySelector('summary~*');const a0=A.get(d);if(a0)a0.cancel();d.dataset.closing='1';
+ const start=d.offsetHeight,cs=getComputedStyle(d),end=sm.offsetHeight+parseFloat(cs.borderTopWidth)+parseFloat(cs.borderBottomWidth);
+ const an=d.animate({height:[start+'px',end+'px']},{duration:D*.85,easing:E});A.set(d,an);if(body)body.animate({opacity:[1,0]},{duration:D*.5,easing:'ease-out',fill:'forwards'});
+ const done=()=>{d.open=false;delete d.dataset.closing;if(body)body.getAnimations().forEach(x=>x.cancel());A.delete(d);};an.onfinish=done;an.oncancel=()=>{delete d.dataset.closing;};};
+const open=d=>{const body=d.querySelector('summary~*');const a0=A.get(d);if(a0)a0.cancel();const start=d.offsetHeight;d.open=true;const end=d.offsetHeight;
+ const an=d.animate({height:[start+'px',end+'px']},{duration:D,easing:E});A.set(d,an);an.onfinish=()=>A.delete(d);if(body){body.getAnimations().forEach(x=>x.cancel());body.animate({opacity:[0,1],transform:['translateY(-6px)','none']},{duration:D*.9,easing:E,delay:60,fill:'backwards'});}};
+all.forEach(d=>{d.style.overflow='hidden';const sm=d.querySelector('summary');if(!sm)return;
+ sm.addEventListener('click',e=>{e.preventDefault();if(d.open&&!d.dataset.closing){shut(d);}else{all.forEach(o=>{if(o!==d)shut(o)});open(d);}});});
+/* start with at most one open */
+let seen=false;all.forEach(d=>{if(d.open){if(seen)d.open=false;seen=true;}});
+})();</script><script id="mob-pill-tap">(()=>{const R=document.documentElement;if(!R.classList.contains('narrow'))return;
+const B=[...document.querySelectorAll('#pillars .pbtn')];if(!B.length)return;
+B.forEach(b=>{const c=b.querySelector('.pcard2');if(c){const cs=getComputedStyle(c);c.style.setProperty('--rbg',cs.backgroundColor);c.style.setProperty('--rbd',cs.borderTopColor);}});
+const shut=()=>B.forEach(x=>x.classList.remove('flip','sel','dim'));
+B.forEach(b=>b.addEventListener('click',e=>{e.stopImmediatePropagation();e.preventDefault();const was=b.classList.contains('flip');shut();if(!was){b.classList.add('flip','sel');}else b.blur();},true));
+document.addEventListener('click',e=>{if(!e.target.closest('#pillars .pbtn'))shut();});
+})();</script>
+</html>
 <script id="mega-rail-js">(function(){function wire(r,tabSel,paneSel){var T=r.querySelectorAll(tabSel),P=r.querySelectorAll(paneSel);function on(i){T.forEach(function(t,k){t.classList.toggle("on",k===i)});P.forEach(function(p,k){p.classList.toggle("on",k===i)})}T.forEach(function(t,i){t.addEventListener("mouseenter",function(){on(i)});t.addEventListener("focus",function(){on(i)})});var w=r.closest(".nvi");if(w)w.addEventListener("mouseleave",function(){on(0)})}document.querySelectorAll(".mrail").forEach(function(r){wire(r,".mtab",".mpane")});document.querySelectorAll(".x2p").forEach(function(r){wire(r,".x2tab",".x2pane")})})();</script>
 
 </body>
