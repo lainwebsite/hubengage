@@ -3867,6 +3867,10 @@ html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2g .mi .mtx b{font-size:13p
 html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpane{display:flex}
 html body .nav .navlinks .nvi:not(.v2l) .mega .mcardwrap .mpane .mpl{flex:1}
 html body .nav .navlinks .nvi.v2l .mega .mcardwrap .x2p{display:flex;flex-direction:column;gap:var(--mp)}
+/* platform panes: every hub's cards use the Communications card size (fixed row height, packed to the top; no stretching to fill the pane) */
+html body .nav .navlinks .nvi .mega .mcardwrap .mpl,html body .nav .navlinks .nvi .mega .mcardwrap .x2items{grid-auto-rows:var(--mrow,58px)!important;align-content:start!important}
+html body .nav .navlinks .nvi .mega .mcardwrap .mpl .mi,html body .nav .navlinks .nvi .mega .mcardwrap .x2items .mi{height:var(--mrow,58px)!important;min-height:0!important;box-sizing:border-box;align-items:center!important}
+html body .nav .navlinks .nvi.v2l .mega .mcardwrap{--mrow:64px}
 </style>
 <style id="ver-toggle">
 /* ===== V1 / V2 toggle: same page, only the navbar content differs ===== */
