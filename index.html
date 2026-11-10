@@ -5065,5 +5065,6 @@ const upd=rail=>{const pn=rail.querySelector('.mpane.on'),box=rail.querySelector
 nav.addEventListener('scroll',e=>{const r=e.target.closest&&e.target.closest('.mrail');if(r)upd(r)},true);
 new MutationObserver(()=>{if(busy)return;document.querySelectorAll('.nvi.on .mrail').forEach(r=>{fix(r);upd(r);setTimeout(()=>upd(r),400)})}).observe(nav,{attributes:true,subtree:true,attributeFilter:['class']});
 })();</script>
+<style id="round28">html.narrow[data-ver="2"] body #navlinks>a:not(.v2l){display:none!important}</style>
 </body>
 </html>
