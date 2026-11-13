@@ -5066,5 +5066,57 @@ nav.addEventListener('scroll',e=>{const r=e.target.closest&&e.target.closest('.m
 new MutationObserver(()=>{if(busy)return;document.querySelectorAll('.nvi.on .mrail').forEach(r=>{fix(r);upd(r);setTimeout(()=>upd(r),400)})}).observe(nav,{attributes:true,subtree:true,attributeFilter:['class']});
 })();</script>
 <style id="round28">html.narrow[data-ver="2"] body #navlinks>a:not(.v2l){display:none!important}</style>
+<style id="round29">
+/* round29: Platform menu shows all four hubs and their features at once (no tabs to click), V1 and V2 */
+html body #mm-platform .mcardwrap .mrail,
+html body #mm-v2-platform .mcardwrap .x2p{display:block!important;height:auto!important;min-height:0!important;padding:14px 14px 12px!important;grid-template-columns:none!important}
+html body #mm-platform .mcardwrap .mtabs,
+html body #mm-v2-platform .mcardwrap .x2tabs{display:none!important}
+html body #mm-v2-platform .mcardwrap .x2body{display:block!important;padding:0!important;height:auto!important}
+html body #mm-platform .mcardwrap .mpanes,
+html body #mm-v2-platform .mcardwrap .x2panes{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;height:auto!important;min-height:0!important;overflow:visible!important;position:static!important;-webkit-mask-image:none!important;mask-image:none!important}
+html body #mm-platform .mcardwrap .mpanes::after,
+html body #mm-v2-platform .mcardwrap .x2panes::after{display:none!important}
+html body #mm-platform .mcardwrap .mpane,
+html body #mm-v2-platform .mcardwrap .x2pane{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important;grid-area:auto!important;position:static!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;padding:8px!important;border-radius:20px!important;background:var(--bg,var(--t))!important;box-shadow:none!important}
+html body #mm-platform .mcardwrap .mpane .mpl,
+html body #mm-v2-platform .mcardwrap .x2pane .x2items{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;grid-template-rows:none!important;grid-auto-rows:auto!important;gap:2px!important;flex:1 1 auto!important;height:auto!important;min-height:0!important;max-height:none!important;width:100%!important;overflow:visible!important;padding:0!important}
+/* feature rows: compact, no card */
+html body #mm-platform .mcardwrap .mpane .mi,
+html body #mm-v2-platform .mcardwrap .x2pane .mi{display:flex!important;align-items:flex-start!important;gap:10px!important;width:auto!important;min-height:0!important;height:auto!important;margin:0!important;padding:8px 8px!important;border-radius:12px!important;background:transparent!important;box-shadow:none!important;transform:none!important}
+html body #mm-platform .mcardwrap .mpane .mi:hover,html body #mm-platform .mcardwrap .mpane .mi:focus-visible,
+html body #mm-v2-platform .mcardwrap .x2pane .mi:hover,html body #mm-v2-platform .mcardwrap .x2pane .mi:focus-visible{background:rgba(255,255,255,.85)!important}
+html body #mm-platform .mcardwrap .mpane .mi>.mic,
+html body #mm-v2-platform .mcardwrap .x2pane .mi>.mic{flex:none!important;width:30px!important;height:30px!important;border-radius:50%!important;background:#fff!important;color:var(--hc,var(--c))!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--hc,var(--c)) 18%,#fff)!important}
+html body #mm-platform .mcardwrap .mpane .mi>.mic svg,
+html body #mm-v2-platform .mcardwrap .x2pane .mi>.mic svg{width:15px!important;height:15px!important}
+html body #mm-platform .mcardwrap .mpane .mi .mtx,
+html body #mm-v2-platform .mcardwrap .x2pane .mi .mtx{min-width:0!important;flex:1 1 auto!important;text-align:left!important;align-items:flex-start!important}
+html body #mm-platform .mcardwrap .mpane .mi .mtx b,
+html body #mm-v2-platform .mcardwrap .x2pane .mi .mtx b{font-size:13.5px!important;line-height:1.25!important;display:block!important}
+html body #mm-platform .mcardwrap .mpane .mi .mtx small,
+html body #mm-v2-platform .mcardwrap .x2pane .mi .mtx small{display:block!important;margin-top:2px!important;font-size:12px!important;line-height:1.35!important;color:#5C7088!important}
+/* first row of each hub is the hub heading */
+html body #mm-platform .mcardwrap .mpane .mpl>.mi:first-child,
+html body #mm-v2-platform .mcardwrap .x2pane .x2items>.mi:first-child{padding:6px 8px 12px!important;margin-bottom:4px!important;border-radius:12px 12px 0 0!important;border-bottom:1px solid color-mix(in srgb,var(--hc,var(--c)) 22%,transparent)!important;pointer-events:auto}
+html body #mm-platform .mcardwrap .mpane .mpl>.mi:first-child .mtx b,
+html body #mm-v2-platform .mcardwrap .x2pane .x2items>.mi:first-child .mtx b{font-size:15px!important;color:var(--hc,var(--c))!important}
+html body #mm-platform .mcardwrap .mpane .mpl>.mi:first-child>.mic,
+html body #mm-v2-platform .mcardwrap .x2pane .x2items>.mi:first-child>.mic{background:var(--hc,var(--c))!important;color:#fff!important;box-shadow:none!important;width:34px!important;height:34px!important}
+@media(max-width:1180px){html.wide body #mm-platform .mcardwrap .mpanes,html.wide body #mm-v2-platform .mcardwrap .x2panes{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* phones and tablets: hubs stacked, every feature listed */
+html.narrow body #mm-platform .mcardwrap .mpanes,
+html.narrow body #mm-v2-platform .mcardwrap .x2panes{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+html.narrow body #mm-platform .mcardwrap .mrail,
+html.narrow body #mm-v2-platform .mcardwrap .x2p{padding:8px!important}
+/* round29b: V2 "The platform" menu uses the same look as the V1 "Platform" menu (same tints, same navy band size), V2 content kept */
+html body #mm-v2-platform .mcardwrap .x2pane[data-i="0"]{background:#EAF3FF!important}
+html body #mm-v2-platform .mcardwrap .x2pane[data-i="1"]{background:#E4F7EF!important}
+html body #mm-v2-platform .mcardwrap .x2pane[data-i="2"]{background:#FFF3E0!important}
+html body #mm-v2-platform .mcardwrap .x2pane[data-i="3"]{background:#FFE9EC!important}
+html body #mm-v2-platform .mcardwrap .x2p{padding-bottom:0!important}
+html body #mm-v2-platform .mcardwrap .x2aside{margin:20px -14px 0!important;width:auto!important}
+html.narrow body #mm-v2-platform .mcardwrap .x2aside{margin:10px 0 0!important}
+</style>
 </body>
 </html>
