@@ -5118,5 +5118,22 @@ html body #mm-v2-platform .mcardwrap .x2p{padding-bottom:0!important}
 html body #mm-v2-platform .mcardwrap .x2aside{margin:20px -14px 0!important;width:auto!important}
 html.narrow body #mm-v2-platform .mcardwrap .x2aside{margin:10px 0 0!important}
 </style>
+<style id="round30">
+/* round30: phones show the 9 challenges in 2 columns so all blocks fit on screen, with or without a team selected */
+@media (max-width:767px) and (orientation:portrait){
+html.narrow body #s-teams .sgrid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+html.narrow body #s-teams .sgrid .scard:not(.nm){display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:6px!important;padding:14px 12px!important;border-radius:18px!important;min-width:0!important;min-height:0!important}
+html.narrow body #s-teams .sgrid .scard .sci{width:34px!important;height:34px!important;border-radius:11px!important;margin:0 0 4px!important;flex:none!important}
+html.narrow body #s-teams .sgrid .scard .sci svg{width:17px!important;height:17px!important}
+html.narrow body #s-teams .sgrid .scard :is(h3,p,ul){grid-column:auto!important;align-self:stretch!important;width:100%!important;margin-left:0!important;text-align:left!important}
+html.narrow body #s-teams .sgrid .scard h3{font-size:16px!important;line-height:1.2!important;letter-spacing:-.01em!important;overflow-wrap:anywhere}
+html.narrow body #s-teams .sgrid .scard p{font-size:13px!important;line-height:1.4!important}
+html.narrow body #s-teams .sgrid .scard ul{gap:5px!important;margin-top:4px!important}
+html.narrow body #s-teams .sgrid .scard li{font-size:12.5px!important;line-height:1.35!important;padding-left:18px!important}
+html.narrow body #s-teams .sgrid .scard li::before{left:1px!important;top:4px!important;width:8px!important;height:5px!important}
+html.narrow body #s-teams .sgrid .scard.lone{grid-column:1/-1!important}
+}
+</style>
+<script id="round30js">(function(){var g=document.getElementById('sgrid');if(!g)return;var o;function mark(){var v=[].filter.call(g.children,function(c){return !c.classList.contains('nm')}).map(function(c,i){return{c:c,k:(parseInt(getComputedStyle(c).order,10)||0)*100+i}}).sort(function(a,b){return a.k-b.k});var want=v.length%2===1?v[v.length-1].c:null;[].forEach.call(g.children,function(c){var on=c===want;if(c.classList.contains('lone')!==on)c.classList.toggle('lone',on)});if(o)o.takeRecords()}o=new MutationObserver(mark);o.observe(g,{attributes:true,attributeFilter:['class','style'],subtree:true,childList:true});mark()})();</script>
 </body>
 </html>
