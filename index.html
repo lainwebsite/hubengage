@@ -5078,7 +5078,7 @@ html body #mm-v2-platform .mcardwrap .x2panes{display:grid!important;grid-templa
 html body #mm-platform .mcardwrap .mpanes::after,
 html body #mm-v2-platform .mcardwrap .x2panes::after{display:none!important}
 html body #mm-platform .mcardwrap .mpane,
-html body #mm-v2-platform .mcardwrap .x2pane{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important;grid-area:auto!important;position:static!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;padding:8px!important;border-radius:20px!important;background:var(--bg,var(--t))!important;box-shadow:none!important}
+html body #mm-v2-platform .mcardwrap .x2pane{display:flex!important;flex-direction:column!important;visibility:inherit!important;opacity:1!important;grid-area:auto!important;position:static!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;padding:8px!important;border-radius:20px!important;background:var(--bg,var(--t))!important;box-shadow:none!important}
 html body #mm-platform .mcardwrap .mpane .mpl,
 html body #mm-v2-platform .mcardwrap .x2pane .x2items{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;grid-template-rows:none!important;grid-auto-rows:auto!important;gap:2px!important;flex:1 1 auto!important;height:auto!important;min-height:0!important;max-height:none!important;width:100%!important;overflow:visible!important;padding:0!important}
 /* feature rows: compact, no card */
@@ -5132,13 +5132,26 @@ html.narrow body #s-teams .sgrid .scard ul{gap:5px!important;margin-top:4px!impo
 html.narrow body #s-teams .sgrid .scard li{font-size:12.5px!important;line-height:1.35!important;padding-left:18px!important}
 html.narrow body #s-teams .sgrid .scard li::before{left:1px!important;top:4px!important;width:8px!important;height:5px!important}
 html.narrow body #s-teams .sgrid .scard.lone{grid-column:1/-1!important}
-html.narrow body #s-teams .sgrid .scard[data-tone="0"]{--hc:#1E96FF!important;--hd:#056CC7!important;--ht:#E8F4FF!important}
-html.narrow body #s-teams .sgrid .scard[data-tone="1"]{--hc:#19C99A!important;--hd:#137C60!important;--ht:#E3F8F1!important}
-html.narrow body #s-teams .sgrid .scard[data-tone="2"]{--hc:#FF4D5E!important;--hd:#C42D3C!important;--ht:#FFE8EA!important}
-html.narrow body #s-teams .sgrid .scard[data-tone="3"]{--hc:#6B46FF!important;--hd:#5A32EE!important;--ht:#EFEAFF!important}
-html.narrow body #s-teams .sgrid .scard[data-tone="4"]{--hc:#FF9F1C!important;--hd:#C25A00!important;--ht:#FFF3E2!important}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="0"]{order:0}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="2"]{order:1}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="4"]{order:2}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="6"]{order:3}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="1"]{order:4}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="3"]{order:5}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="5"]{order:6}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="7"]{order:7}
+html.narrow body #s-teams .sgrid:not(.f) .scard[data-i="8"]{order:8}
 }
 </style>
-<script id="round30js">(function(){var g=document.getElementById('sgrid');if(!g)return;var o;function mark(){var v=[].filter.call(g.children,function(c){return !c.classList.contains('nm')}).map(function(c,i){return{c:c,k:(parseInt(getComputedStyle(c).order,10)||0)*100+i}}).sort(function(a,b){return a.k-b.k});v.forEach(function(x,i){x.c.setAttribute('data-tone',i%5)});[].forEach.call(g.children,function(c){if(c.classList.contains('nm'))c.removeAttribute('data-tone')});var want=v.length%2===1?v[v.length-1].c:null;[].forEach.call(g.children,function(c){var on=c===want;if(c.classList.contains('lone')!==on)c.classList.toggle('lone',on)});if(o)o.takeRecords()}o=new MutationObserver(mark);o.observe(g,{attributes:true,attributeFilter:['class','style'],subtree:true,childList:true});mark()})();</script>
+<script id="round30js">(function(){var g=document.getElementById('sgrid');if(!g)return;var o;
+function col(c){return getComputedStyle(c).getPropertyValue('--hc').trim()}
+function arrange(v){var n=v.length,res=[],used=[];function ok(c,k){return (k<1||col(c)!==col(res[k-1]))&&(k<2||col(c)!==col(res[k-2]))}
+function go(k){if(k===n)return true;for(var i=0;i<n;i++){if(used[i]||!ok(v[i],k))continue;used[i]=1;res[k]=v[i];if(go(k+1))return true;used[i]=0}return false}
+return go(0)?res:v}
+function mark(){var all=[].slice.call(g.children);all.forEach(function(c){c.style.removeProperty('order')});
+var v=all.filter(function(c){return !c.classList.contains('nm')}).map(function(c,i){return{c:c,k:(parseInt(getComputedStyle(c).order,10)||0)*100+i}}).sort(function(a,b){return a.k-b.k}).map(function(x){return x.c});
+if(g.classList.contains('f')&&v.length>2&&matchMedia('(max-width:767px) and (orientation:portrait)').matches){v=arrange(v);v.forEach(function(c,i){c.style.setProperty('order',i,'important')})}
+var want=v.length%2===1?v[v.length-1]:null;if(want&&v.length>2&&col(want)===col(v[v.length-2]))want=null;all.forEach(function(c){var on=c===want;if(c.classList.contains('lone')!==on)c.classList.toggle('lone',on)});if(o)o.takeRecords()}
+o=new MutationObserver(mark);o.observe(g,{attributes:true,attributeFilter:['class','style'],subtree:true,childList:true});mark()})();</script>
 </body>
 </html>
