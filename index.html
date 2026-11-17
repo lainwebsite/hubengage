@@ -5132,8 +5132,13 @@ html.narrow body #s-teams .sgrid .scard ul{gap:5px!important;margin-top:4px!impo
 html.narrow body #s-teams .sgrid .scard li{font-size:12.5px!important;line-height:1.35!important;padding-left:18px!important}
 html.narrow body #s-teams .sgrid .scard li::before{left:1px!important;top:4px!important;width:8px!important;height:5px!important}
 html.narrow body #s-teams .sgrid .scard.lone{grid-column:1/-1!important}
+html.narrow body #s-teams .sgrid .scard[data-tone="0"]{--hc:#1E96FF!important;--hd:#056CC7!important;--ht:#E8F4FF!important}
+html.narrow body #s-teams .sgrid .scard[data-tone="1"]{--hc:#19C99A!important;--hd:#137C60!important;--ht:#E3F8F1!important}
+html.narrow body #s-teams .sgrid .scard[data-tone="2"]{--hc:#FF4D5E!important;--hd:#C42D3C!important;--ht:#FFE8EA!important}
+html.narrow body #s-teams .sgrid .scard[data-tone="3"]{--hc:#6B46FF!important;--hd:#5A32EE!important;--ht:#EFEAFF!important}
+html.narrow body #s-teams .sgrid .scard[data-tone="4"]{--hc:#FF9F1C!important;--hd:#C25A00!important;--ht:#FFF3E2!important}
 }
 </style>
-<script id="round30js">(function(){var g=document.getElementById('sgrid');if(!g)return;var o;function mark(){var v=[].filter.call(g.children,function(c){return !c.classList.contains('nm')}).map(function(c,i){return{c:c,k:(parseInt(getComputedStyle(c).order,10)||0)*100+i}}).sort(function(a,b){return a.k-b.k});var want=v.length%2===1?v[v.length-1].c:null;[].forEach.call(g.children,function(c){var on=c===want;if(c.classList.contains('lone')!==on)c.classList.toggle('lone',on)});if(o)o.takeRecords()}o=new MutationObserver(mark);o.observe(g,{attributes:true,attributeFilter:['class','style'],subtree:true,childList:true});mark()})();</script>
+<script id="round30js">(function(){var g=document.getElementById('sgrid');if(!g)return;var o;function mark(){var v=[].filter.call(g.children,function(c){return !c.classList.contains('nm')}).map(function(c,i){return{c:c,k:(parseInt(getComputedStyle(c).order,10)||0)*100+i}}).sort(function(a,b){return a.k-b.k});v.forEach(function(x,i){x.c.setAttribute('data-tone',i%5)});[].forEach.call(g.children,function(c){if(c.classList.contains('nm'))c.removeAttribute('data-tone')});var want=v.length%2===1?v[v.length-1].c:null;[].forEach.call(g.children,function(c){var on=c===want;if(c.classList.contains('lone')!==on)c.classList.toggle('lone',on)});if(o)o.takeRecords()}o=new MutationObserver(mark);o.observe(g,{attributes:true,attributeFilter:['class','style'],subtree:true,childList:true});mark()})();</script>
 </body>
 </html>
