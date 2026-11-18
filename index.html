@@ -5153,5 +5153,52 @@ var v=all.filter(function(c){return !c.classList.contains('nm')}).map(function(c
 if(g.classList.contains('f')&&v.length>2&&matchMedia('(max-width:767px) and (orientation:portrait)').matches){v=arrange(v);v.forEach(function(c,i){c.style.setProperty('order',i,'important')})}
 var want=v.length%2===1?v[v.length-1]:null;if(want&&v.length>2&&col(want)===col(v[v.length-2]))want=null;all.forEach(function(c){var on=c===want;if(c.classList.contains('lone')!==on)c.classList.toggle('lone',on)});if(o)o.takeRecords()}
 o=new MutationObserver(mark);o.observe(g,{attributes:true,attributeFilter:['class','style'],subtree:true,childList:true});mark()})();</script>
+<style id="round32">
+/* round32: on phones the team chips (Leadership, Human Resources, ...) become a dropdown */
+.sdd{display:none}
+@media (max-width:767px) and (orientation:portrait){
+html.narrow body #s-teams .srolebar .sroles{display:none!important}
+html.narrow body #s-teams .srolebar{overflow:visible!important}
+html.narrow body #s-teams .sdd{display:block;position:relative;width:100%;max-width:420px;margin:0 auto;z-index:30}
+html.narrow body #s-teams .sddb{display:flex;align-items:center;gap:12px;width:100%;height:58px;padding:0 14px 0 10px;border-radius:18px;background:#fff;border:1px solid rgba(14,69,106,.18);box-shadow:0 6px 18px rgba(14,69,106,.08);font:500 16px/1.2 inherit;font-family:inherit;color:#0E456A;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+html.narrow body #s-teams .sdd.sel .sddb{border-color:#0E456A;box-shadow:0 6px 18px rgba(14,69,106,.14)}
+html.narrow body #s-teams .sddb:focus-visible,html.narrow body #s-teams .sddo:focus-visible{outline:2px solid #0E456A;outline-offset:2px}
+html.narrow body #s-teams .sddi{flex:none;width:38px;height:38px;border-radius:12px;background:#E3EEF6;display:grid;place-items:center}
+html.narrow body #s-teams .sddi svg{width:20px;height:20px}
+html.narrow body #s-teams .sddl{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html.narrow body #s-teams .sddc{flex:none;width:20px;height:20px;transition:transform .2s ease}
+html.narrow body #s-teams .sdd.open .sddc{transform:rotate(180deg)}
+html.narrow body #s-teams .sddm{position:absolute;left:0;right:0;top:calc(100% + 8px);margin:0;padding:8px;list-style:none;background:#fff;border-radius:20px;border:1px solid rgba(14,69,106,.12);box-shadow:0 24px 48px -16px rgba(14,30,52,.35);max-height:min(62vh,440px);overflow-y:auto;overscroll-behavior:contain}
+html.narrow body #s-teams .sddm[hidden]{display:none}
+html.narrow body #s-teams .sddo{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:6px 10px;border:0;border-radius:14px;background:transparent;font:500 16px/1.2 inherit;font-family:inherit;color:#0E456A;text-align:left;cursor:pointer}
+html.narrow body #s-teams .sddo[aria-selected="true"]{background:#E8F2FB}
+html.narrow body #s-teams .sddo .sddi{width:34px;height:34px;border-radius:10px}
+html.narrow body #s-teams .sddo .sddi svg{width:18px;height:18px}
+html.narrow body #s-teams .sddo .sddk{margin-left:auto;width:18px;height:18px;flex:none;opacity:0}
+html.narrow body #s-teams .sddo[aria-selected="true"] .sddk{opacity:1}
+}
+</style>
+<script id="round32js">(function(){if(!document.documentElement.classList.contains('narrow'))return;var bar=document.querySelector('#s-teams .srolebar'),list=bar&&bar.querySelector('.sroles');if(!bar||!list)return;
+var B=[].slice.call(list.querySelectorAll('.srole'));if(!B.length)return;
+var ALL='<svg viewBox="0 0 24 24" fill="none" stroke="#0E456A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>';
+var CH='<svg class="sddc" viewBox="0 0 24 24" fill="none" stroke="#0E456A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+var CK='<svg class="sddk" viewBox="0 0 24 24" fill="none" stroke="#0E456A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+function ic(b){var s=b?b.querySelector('span'):null;return s?s.innerHTML:ALL}
+var dd=document.createElement('div');dd.className='sdd';
+dd.innerHTML='<button type="button" class="sddb" aria-haspopup="listbox" aria-expanded="false" aria-controls="sddm"><span class="sddi"></span><span class="sddl"></span>'+CH+'</button><div class="sddm" id="sddm" role="listbox" aria-label="Team" hidden></div>';
+var btn=dd.querySelector('.sddb'),menu=dd.querySelector('.sddm');menu.setAttribute('tabindex','-1');menu.style.display='';
+var opts=[{b:null,t:'All teams'}].concat(B.map(function(b){return{b:b,t:b.textContent.trim()}}));
+opts.forEach(function(o){var e=document.createElement('button');e.type='button';e.className='sddo';e.setAttribute('role','option');e.innerHTML='<span class="sddi">'+ic(o.b)+'</span><span>'+o.t+'</span>'+CK;o.e=e;e.addEventListener('click',function(){pick(o.b)});menu.appendChild(e)});
+bar.insertBefore(dd,bar.firstChild);
+function cur(){return list.querySelector('.srole.on')}
+function sync(){var c=cur();btn.querySelector('.sddi').innerHTML=ic(c);btn.querySelector('.sddl').textContent=c?c.textContent.trim():'All teams';dd.classList.toggle('sel',!!c);opts.forEach(function(o){o.e.setAttribute('aria-selected',String((o.b||null)===(c||null)))})}
+function open(v){dd.classList.toggle('open',v);btn.setAttribute('aria-expanded',String(v));menu.hidden=!v;if(v){var s=menu.querySelector('[aria-selected="true"]');if(s)menu.scrollTop=Math.max(0,s.offsetTop-menu.clientHeight/2+s.offsetHeight/2)}}
+function pick(b){var c=cur();open(false);if(b===null){if(c)c.click()}else if(b!==c){b.click()}sync();btn.focus({preventScroll:true})}
+btn.addEventListener('click',function(){open(menu.hidden)});
+document.addEventListener('click',function(e){if(!menu.hidden&&!dd.contains(e.target))open(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!menu.hidden){open(false);btn.focus({preventScroll:true})}});
+new MutationObserver(sync).observe(list,{attributes:true,attributeFilter:['class'],subtree:true});
+sync()})();</script>
+
 </body>
 </html>
